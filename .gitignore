@@ -1,0 +1,54 @@
+# Thư mục và file tạm của Unity
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Uu]ser[Ss]ettings/
+MemoryCaptures/
+
+# Log file
+*.log
+
+# Thư mục Build (nếu không muốn đẩy bản build lên repo)
+Build/
+Builds/
+[Bb]uild/
+
+# Visual Studio cache (chỉ sử dụng trên máy local)
+.vs/
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+
+# Mono develop
+*.pidb
+*.unityproj
+
+# Thư mục dành cho hệ điều hành
+.DS_Store
+Thumbs.db
+
+# Thư mục chứa file phát sinh từ Unity
+sysinfo.txt
+
+# File môi trường cá nhân (nếu dùng JetBrains Rider)
+.idea/
+*.iml
+
+# Ignore file meta
+
+# File liên quan đến ánh xạ Unity
+*.unitypackage
+
+# Thư mục liên quan đến Cache
+Cache/
+*.stackdump
+
+# Thư mục dành cho plugin hoặc cache không cần thiết
+Assets/Plugins/*/Editor/*/Resources/*/__PreviewCache/
