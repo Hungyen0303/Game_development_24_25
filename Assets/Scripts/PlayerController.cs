@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlTypes;
@@ -14,8 +15,11 @@ public class PlayerController : MonoBehaviour
     Vector2 moveInput;
 
     TouchingDirections touchingDirections;
+    public LayerMask interactableLayer;
 
-    public float CurrentMoveSpeed { get
+    public float CurrentMoveSpeed
+    {
+        get
         {
             if (IsMoving && !touchingDirections.IsOnWall)
             {
@@ -76,7 +80,9 @@ public class PlayerController : MonoBehaviour
 
     public bool isFacingRight = true;
 
-    public bool IsFacingRight { get
+    public bool IsFacingRight
+    {
+        get
         {
             return isFacingRight;
         }
@@ -106,13 +112,21 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.F)) interactWithNPC();
+    }
+
+    private void interactWithNPC()
+    {
+        var facingDir = new Vector2(1,0)* (isFacingRight?1:-1);
+        Debug.Log(facingDir);
+        var interactPos = (Vector2)transform.position + facingDir;
+        Debug.DrawLine(transform.position,interactPos,Color.red,1f);
     }
 
     private void FixedUpdate()
@@ -124,7 +138,7 @@ public class PlayerController : MonoBehaviour
 
     private void SetFacingDirection(Vector2 moveInput)
     {
-        if(moveInput.x > 0 && !IsFacingRight)
+        if (moveInput.x > 0 && !IsFacingRight)
         {
             IsFacingRight = true;
         }
@@ -139,7 +153,15 @@ public class PlayerController : MonoBehaviour
         moveInput = context.ReadValue<Vector2>();
 
         IsMoving = moveInput != Vector2.zero;
-
+        // check xem co dung phai NPC khong
+        if (IsMoving)
+        {
+            Vector2 targetPos = (Vector2)transform.position + moveInput;
+            if (Physics2D.OverlapCircle(targetPos, 0.2f, interactableLayer) != null)
+            {
+                IsMoving = false;
+            }
+        }
         SetFacingDirection(moveInput);
     }
 
@@ -148,7 +170,8 @@ public class PlayerController : MonoBehaviour
         if (context.started)
         {
             IsRunning = true;
-        } else if(context.canceled)
+        }
+        else if (context.canceled)
         {
             IsRunning = false;
         }
