@@ -156,106 +156,6 @@ Transform:
   - {fileID: 1893255910}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &121122792 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1128570771966259525, guid: 18a358c0307b3174e89e50f17cafa187, type: 3}
-  m_PrefabInstance: {fileID: 5403041768934588819}
-  m_PrefabAsset: {fileID: 0}
---- !u!61 &121122795
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 121122792}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.15111482, y: -0.1964485}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4, y: 4}
-    newSize: {x: 4, y: 4}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.8239553, y: 3.1839833}
-  m_EdgeRadius: 0
---- !u!50 &121122796
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 121122792}
-  m_BodyType: 2
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!114 &121122797
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 121122792}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a578ed50a45d1a34e844404b6a64bdc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialog:
-    lines:
-    - "Xin ch\xE0o, h\u1EE1i chi\u1EBFn binh l\u1EA1c l\u1ED1i."
-    - "Ta \u1EDF \u0111\xE2y \u0111\u1EC3 h\u01B0\u1EDBng d\u1EABn ng\u01B0\u01A1i
-      nh\u1EEFng b\u01B0\u1EDBc \u0111i \u0111\u1EA7u ti\xEAn."
-    - "Nh\u1EA5n \"D\" \u0111\u1EC3 ti\u1EBFn t\u1EDBi, nh\u1EA5n \"S\" \u0111\u1EC3
-      l\xF9i l\u1EA1i, nh\u1EA5n \"W\" \u0111\u1EC3 nh\u1EA3y l\xEAn. C\xF2n ph\xEDm
-      \"F\" gi\xFAp ng\u01B0\u01A1i t\u01B0\u01A1ng t\xE1c v\u1EDBi nh\u1EEFng k\u1EBB
-      kh\xE1c."
-    - "Ph\xEDm \"Space\" \u0111\u1EC3 t\u1EA5n c\xF4ng k\u1EBB th\xF9."
-    - "B\u1EA3o tr\u1ECDng.... V\xE0 h\u1EB9n g\u1EB7p l\u1EA1i."
 --- !u!1 &241644681
 GameObject:
   m_ObjectHideFlags: 3
@@ -41923,9 +41823,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: MysteryWizard
       objectReference: {fileID: 0}
-    - target: {fileID: 1128570771966259525, guid: 18a358c0307b3174e89e50f17cafa187, type: 3}
-      propertyPath: m_Layer
-      value: 6
+    - target: {fileID: 2084771262755219206, guid: 18a358c0307b3174e89e50f17cafa187, type: 3}
+      propertyPath: dialog.lines.Array.data[2]
+      value: "Nh\u1EA5n \"D\" \u0111\u1EC3 ti\u1EBFn t\u1EDBi, nh\u1EA5n \"S\" \u0111\u1EC3
+        l\xF9i l\u1EA1i, nh\u1EA5n \"W\" \u0111\u1EC3 nh\u1EA3y l\xEAn. C\xF2n ph\xEDm
+        \"F\" s\u1EBD gi\xFAp ng\u01B0\u01A1i t\u01B0\u01A1ng t\xE1c v\u1EDBi nh\u1EEFng
+        k\u1EBB kh\xE1c."
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084771262755219206, guid: 18a358c0307b3174e89e50f17cafa187, type: 3}
+      propertyPath: dialog.lines.Array.data[4]
+      value: "B\u1EA3o tr\u1ECDng...V\xE0 h\u1EB9n g\u1EB7p l\u1EA1i."
       objectReference: {fileID: 0}
     - target: {fileID: 3434899412586305518, guid: 18a358c0307b3174e89e50f17cafa187, type: 3}
       propertyPath: m_LocalPosition.x
@@ -41970,16 +41877,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1128570771966259525, guid: 18a358c0307b3174e89e50f17cafa187, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 121122796}
-    - targetCorrespondingSourceObject: {fileID: 1128570771966259525, guid: 18a358c0307b3174e89e50f17cafa187, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 121122795}
-    - targetCorrespondingSourceObject: {fileID: 1128570771966259525, guid: 18a358c0307b3174e89e50f17cafa187, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 121122797}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18a358c0307b3174e89e50f17cafa187, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
