@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 8679288332627796478}
   - component: {fileID: 895640440488231977}
   - component: {fileID: 7048768188424104636}
+  - component: {fileID: 2014753694019989742}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -213,7 +214,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -502,3 +503,35 @@ MonoBehaviour:
   invincibilityTime: 0.25
   health: 100
   isAlive: 1
+--- !u!114 &2014753694019989742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8834687529572124782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5a07861e607b3140bc84be980fa5e78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  castFilter:
+    useTriggers: 0
+    useLayerMask: 0
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
+  groundDistance: 0.05
+  wallDistance: 0.2
+  ceilingDistance: 0.05
+  isGrounded: 1
+  isOnWall: 1
+  isOnCeiling: 1
