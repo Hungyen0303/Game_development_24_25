@@ -5,7 +5,7 @@ using System.Data.SqlTypes;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(Rigidbody2D), typeof(TouchingDirections))]
+[RequireComponent(typeof(Rigidbody2D), typeof(TouchingDirections), typeof(Damagable))]
 public class PlayerController : MonoBehaviour
 {
     public float walkSpeed = 5f;
@@ -15,34 +15,43 @@ public class PlayerController : MonoBehaviour
     Vector2 moveInput;
 
     TouchingDirections touchingDirections;
+    Damagable damagable;
     public LayerMask interactableLayer;
 
     public float CurrentMoveSpeed
     {
         get
         {
-            if (IsMoving && !touchingDirections.IsOnWall)
+            if(CanMove)
             {
-                if (touchingDirections.IsGrounded)
+                if (IsMoving && !touchingDirections.IsOnWall)
                 {
-                    if (IsRunning)
+                    if (touchingDirections.IsGrounded)
                     {
-                        return runSpeed;
+                        if (IsRunning)
+                        {
+                            return runSpeed;
+                        }
+                        else
+                        {
+                            return walkSpeed;
+                        }
                     }
                     else
                     {
-                        return walkSpeed;
+                        return airWalkSpeed;
                     }
                 }
                 else
                 {
-                    return airWalkSpeed;
+                    return 0;
                 }
             }
             else
             {
                 return 0;
             }
+            
         }
     }
 
@@ -107,7 +116,9 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         touchingDirections = GetComponent<TouchingDirections>();
+        damagable = GetComponent<Damagable>();
     }
+
 
     // Start is called before the first frame update
     void Start()
@@ -136,7 +147,10 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.velocity = new Vector2(moveInput.x * CurrentMoveSpeed, rb.velocity.y);
+        if(!damagable.LockVelocity)
+        {
+            rb.velocity = new Vector2(moveInput.x * CurrentMoveSpeed, rb.velocity.y);
+        }
 
         animator.SetFloat(AnimationStrings.yVelocity, rb.velocity.y);
     }
@@ -157,7 +171,9 @@ public class PlayerController : MonoBehaviour
     {
         moveInput = context.ReadValue<Vector2>();
 
-        IsMoving = moveInput != Vector2.zero;
+        if(IsAlive)
+        {
+            IsMoving = moveInput != Vector2.zero;
         // check xem co dung phai NPC khong
         if (IsMoving)
         {
@@ -167,7 +183,13 @@ public class PlayerController : MonoBehaviour
                 IsMoving = false;
             }
         }
-        SetFacingDirection(moveInput);
+            SetFacingDirection(moveInput);
+        }
+
+        else
+        {
+            IsMoving = false;
+        }
     }
 
     public void OnRun(InputAction.CallbackContext context)
@@ -183,12 +205,39 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    public bool CanMove { get 
+        { 
+            return animator.GetBool(AnimationStrings.canMove); 
+        }
+    }
+
+    public bool IsAlive
+    {
+        get
+        {
+            return animator.GetBool(AnimationStrings.isAlive);
+        }
+    }
+
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (context.started && touchingDirections.IsGrounded)
+        if (context.started && touchingDirections.IsGrounded && CanMove)
         {
             animator.SetTrigger(AnimationStrings.jump);
             rb.velocity = new Vector2(rb.velocity.x, jumpImpulse);
         }
+    }
+
+    public void OnAttack(InputAction.CallbackContext context)
+    {
+        if(context.started)
+        {
+            animator.SetTrigger(AnimationStrings.attack);
+        }
+    }
+
+    public void OnHit(int damage, Vector2 knockback)
+    {
+        rb.velocity = new Vector2(knockback.x, rb.velocity.y + knockback.y);
     }
 }
