@@ -116,17 +116,22 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void handleUpdate()
     {
-        if(Input.GetKeyDown(KeyCode.F)) interactWithNPC();
+        if(Input.GetKeyDown(KeyCode.F)) 
+            interactWithNPC();
     }
 
     private void interactWithNPC()
     {
         var facingDir = new Vector2(1,0)* (isFacingRight?1:-1);
-        Debug.Log(facingDir);
+        // Debug.Log(facingDir);
         var interactPos = (Vector2)transform.position + facingDir;
-        Debug.DrawLine(transform.position,interactPos,Color.red,1f);
+        // Debug.DrawLine(transform.position,interactPos,Color.red,1f);
+        var collider = Physics2D.OverlapCircle(interactPos,0.2f,interactableLayer);
+        if (collider!=null){
+            collider.GetComponent<Interactable>()?.Interact();
+        }
     }
 
     private void FixedUpdate()
