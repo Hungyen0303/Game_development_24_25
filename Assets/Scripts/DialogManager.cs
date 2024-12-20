@@ -23,7 +23,7 @@ public class DialogManager : MonoBehaviour
 
     public void handleUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.F) && !isPrinting)
+        if (Input.GetKeyDown(KeyCode.T) && !isPrinting)
         {
             Debug.Log(currentline);
             ++currentline;

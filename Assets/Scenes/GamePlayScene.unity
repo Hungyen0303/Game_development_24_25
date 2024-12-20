@@ -945,17 +945,37 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -1.92
       objectReference: {fileID: 0}
+    - target: {fileID: 3304569952712892485, guid: 44147e297e099ee448761c75edf69915, type: 3}
+      propertyPath: health
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3304569952712892485, guid: 44147e297e099ee448761c75edf69915, type: 3}
+      propertyPath: maxHealth
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 3531851154730523493, guid: 44147e297e099ee448761c75edf69915, type: 3}
       propertyPath: m_Name
       value: Knight (9)
       objectReference: {fileID: 0}
     - target: {fileID: 7549433201323674278, guid: 44147e297e099ee448761c75edf69915, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5328678
+      objectReference: {fileID: 0}
+    - target: {fileID: 7549433201323674278, guid: 44147e297e099ee448761c75edf69915, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5328678
+      objectReference: {fileID: 0}
+    - target: {fileID: 7549433201323674278, guid: 44147e297e099ee448761c75edf69915, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5328678
+      objectReference: {fileID: 0}
+    - target: {fileID: 7549433201323674278, guid: 44147e297e099ee448761c75edf69915, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.907593
+      value: 16.4692
       objectReference: {fileID: 0}
     - target: {fileID: 7549433201323674278, guid: 44147e297e099ee448761c75edf69915, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.9475565
+      value: -2.3873
       objectReference: {fileID: 0}
     - target: {fileID: 7549433201323674278, guid: 44147e297e099ee448761c75edf69915, type: 3}
       propertyPath: m_LocalPosition.z
@@ -39850,21 +39870,31 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2084771262755219206, guid: 18a358c0307b3174e89e50f17cafa187, type: 3}
+      propertyPath: dialog.lines.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084771262755219206, guid: 18a358c0307b3174e89e50f17cafa187, type: 3}
       propertyPath: dialog.lines.Array.data[1]
       value: "Ta \u1EDF \u0111\xE2y \u0111\u1EC3 h\u01B0\u1EDBng d\u1EABn ng\u01B0\u01A1i
         m\u1ED9t v\xE0i chi\xEAu th\u1EE9c c\u01A1 b\u1EA3n."
       objectReference: {fileID: 0}
     - target: {fileID: 2084771262755219206, guid: 18a358c0307b3174e89e50f17cafa187, type: 3}
       propertyPath: dialog.lines.Array.data[2]
-      value: "D: ti\u1EBFn t\u1EDBi, A: lui l\u1EA1i, W: nh\u1EA3y l\xEAn, F: t\u01B0\u01A1ng
+      value: "D: ti\u1EBFn t\u1EDBi, A: lui l\u1EA1i, W: nh\u1EA3y l\xEAn, T: t\u01B0\u01A1ng
         t\xE1c v\u1EDBi c\xE1c nh\xE2n vi\xEAn kh\xE1c."
       objectReference: {fileID: 0}
     - target: {fileID: 2084771262755219206, guid: 18a358c0307b3174e89e50f17cafa187, type: 3}
       propertyPath: dialog.lines.Array.data[3]
-      value: "Click chu\u1ED9t ph\u1EA3i \u0111\u1EC3 t\u1EA5n c\xF4ng k\u1EBB \u0111\u1ECBch"
+      value: "Click chu\u1ED9t ph\u1EA3i \u0111\u1EC3 t\u1EA5n c\xF4ng k\u1EBB \u0111\u1ECBch
+        b\u1EB1ng \u0111\xF2n \u0111\xE1nh c\u1EADn chi\u1EBFn"
       objectReference: {fileID: 0}
     - target: {fileID: 2084771262755219206, guid: 18a358c0307b3174e89e50f17cafa187, type: 3}
       propertyPath: dialog.lines.Array.data[4]
+      value: "Nh\u1EA5n F \u0111\u1EC3 s\u1EED d\u1EE5ng cung v\xE0 t\u1EA5n c\xF4ng
+        t\u1EA7m xa."
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084771262755219206, guid: 18a358c0307b3174e89e50f17cafa187, type: 3}
+      propertyPath: dialog.lines.Array.data[5]
       value: "Ch\xFAc may m\u1EAFn!"
       objectReference: {fileID: 0}
     - target: {fileID: 3434899412586305518, guid: 18a358c0307b3174e89e50f17cafa187, type: 3}

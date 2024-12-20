@@ -129,7 +129,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     public void handleUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.T))
         {
 
             interactWithNPC();
