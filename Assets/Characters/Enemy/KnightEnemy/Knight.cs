@@ -5,7 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D), typeof(TouchingDirections), typeof(Damagable))]
 public class Knight : MonoBehaviour
 {
-    public float walkSpeed = 3f;
+    public float walkAcceleration = 3f;
+    public float maxSpeed = 3f;
     public float walkStopRate = 0.6f;
     public DetectionZone attackZone;
     public DetectionZone cliffDetectionZone;
@@ -48,17 +49,18 @@ public class Knight : MonoBehaviour
 
     public bool _hasTarget = false;
 
-    public bool HasTarget {
-        get 
-        { 
-            return _hasTarget; 
-        } 
+    public bool HasTarget
+    {
+        get
+        {
+            return _hasTarget;
+        }
         private set
         {
             _hasTarget = value;
             animator.SetBool(AnimationStrings.hasTarget, value);
         }
-    } 
+    }
 
     public bool CanMove
     {
@@ -91,22 +93,25 @@ public class Knight : MonoBehaviour
     void Update()
     {
         HasTarget = attackZone.detectedColliders.Count > 0;
-        if(AttackCooldown > 0)
+        if (AttackCooldown > 0)
         {
             AttackCooldown -= Time.deltaTime;
         }
     }
     private void FixedUpdate()
     {
-        if(touchingDirections.IsOnWall && touchingDirections.IsGrounded)
+        if (touchingDirections.IsOnWall && touchingDirections.IsGrounded)
         {
             FlipDirection();
         }
-        if(!damagable.LockVelocity)
+        if (!damagable.LockVelocity)
         {
             if (CanMove)
             {
-                rb.velocity = new Vector2(walkSpeed * walkDirectionVector.x, rb.velocity.y);
+                rb.velocity = new Vector2(
+                    Mathf.Clamp(rb.velocity.x + (walkAcceleration * walkDirectionVector.x * Time.fixedDeltaTime), -maxSpeed, maxSpeed),
+                    rb.velocity.y);
+
             }
             else
             {
@@ -139,13 +144,13 @@ public class Knight : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     public void OnCliffDetected()
     {
-        if(touchingDirections.IsGrounded)
+        if (touchingDirections.IsGrounded)
         {
             FlipDirection();
         }
