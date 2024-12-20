@@ -106,7 +106,7 @@ public class Knight : MonoBehaviour
         }
         if (!damagable.LockVelocity)
         {
-            if (CanMove)
+            if (CanMove && touchingDirections.IsGrounded)
             {
                 rb.velocity = new Vector2(
                     Mathf.Clamp(rb.velocity.x + (walkAcceleration * walkDirectionVector.x * Time.fixedDeltaTime), -maxSpeed, maxSpeed),

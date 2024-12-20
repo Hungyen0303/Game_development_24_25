@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     {
         get
         {
-            if(CanMove)
+            if (CanMove)
             {
                 if (IsMoving && !touchingDirections.IsOnWall)
                 {
@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
             {
                 return 0;
             }
-            
+
         }
     }
 
@@ -129,7 +129,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     public void handleUpdate()
     {
-        if(Input.GetKeyDown(KeyCode.F)){
+        if (Input.GetKeyDown(KeyCode.F))
+        {
 
             interactWithNPC();
         }
@@ -137,19 +138,20 @@ public class PlayerController : MonoBehaviour
 
     private void interactWithNPC()
     {
-        var facingDir = new Vector2(1,0)* (isFacingRight?1:-1);
+        var facingDir = new Vector2(1, 0) * (isFacingRight ? 1 : -1);
         // Debug.Log(facingDir);
         var interactPos = (Vector2)transform.position + facingDir;
         // Debug.DrawLine(transform.position,interactPos,Color.red,1f);
-        var collider = Physics2D.OverlapCircle(interactPos,0.2f,interactableLayer);
-        if (collider!=null){
+        var collider = Physics2D.OverlapCircle(interactPos, 0.2f, interactableLayer);
+        if (collider != null)
+        {
             collider.GetComponent<Interactable>()?.Interact();
         }
     }
 
     private void FixedUpdate()
     {
-        if(!damagable.LockVelocity)
+        if (!damagable.LockVelocity)
         {
             rb.velocity = new Vector2(moveInput.x * CurrentMoveSpeed, rb.velocity.y);
         }
@@ -173,18 +175,18 @@ public class PlayerController : MonoBehaviour
     {
         moveInput = context.ReadValue<Vector2>();
 
-        if(IsAlive)
+        if (IsAlive)
         {
             IsMoving = moveInput != Vector2.zero;
-        // check xem co dung phai NPC khong
-        if (IsMoving)
-        {
-            Vector2 targetPos = (Vector2)transform.position + moveInput;
-            if (Physics2D.OverlapCircle(targetPos, 0.2f, interactableLayer) != null)
+            // check xem co dung phai NPC khong
+            if (IsMoving)
             {
-                IsMoving = false;
+                Vector2 targetPos = (Vector2)transform.position + moveInput;
+                if (Physics2D.OverlapCircle(targetPos, 0.2f, interactableLayer) != null)
+                {
+                    IsMoving = false;
+                }
             }
-        }
             SetFacingDirection(moveInput);
         }
 
@@ -207,9 +209,11 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    public bool CanMove { get 
-        { 
-            return animator.GetBool(AnimationStrings.canMove); 
+    public bool CanMove
+    {
+        get
+        {
+            return animator.GetBool(AnimationStrings.canMove);
         }
     }
 
@@ -232,9 +236,17 @@ public class PlayerController : MonoBehaviour
 
     public void OnAttack(InputAction.CallbackContext context)
     {
-        if(context.started)
+        if (context.started)
         {
             animator.SetTrigger(AnimationStrings.attack);
+
+        }
+    }
+    public void OnRangedAttack(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            animator.SetTrigger(AnimationStrings.rangedAttackTrigger);
         }
     }
 
