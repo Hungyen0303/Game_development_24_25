@@ -9,7 +9,7 @@ public enum GameState
 public class GameController : MonoBehaviour
 {
     [SerializeField] PlayerController playerController;
-    GameState gameState ;
+    GameState gameState =GameState.Battle;
     private void Start()
     {
         DialogManager.Instance.OnShowDialog += () =>

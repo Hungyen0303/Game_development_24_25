@@ -25,7 +25,7 @@ public class DialogManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F) && !isPrinting)
         {
-            // Debug.Log(currentline);
+            Debug.Log(currentline);
             ++currentline;
             if (currentline < dialog.Lines.Count)
             {
@@ -59,6 +59,6 @@ public class DialogManager : MonoBehaviour
             dialogText.text += letter;
             yield return new WaitForSeconds(1f / letterPerSecond);
         }
-        isPrinting=false;
+        isPrinting = false;
     }
 }

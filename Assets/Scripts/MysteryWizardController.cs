@@ -6,6 +6,7 @@ public class MysteryWizardController : MonoBehaviour, Interactable
 {
     [SerializeField] Dialog dialog;
     public void Interact(){
+        // Debug.Log("interactNPC1");
         StartCoroutine(DialogManager.Instance.showDialog(dialog));
     }
 }
