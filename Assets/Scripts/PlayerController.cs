@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
     Damagable damagable;
     public LayerMask interactableLayer;
 
+    UIManager uiManager;
+
     public float CurrentMoveSpeed
     {
         get
@@ -117,6 +119,8 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         touchingDirections = GetComponent<TouchingDirections>();
         damagable = GetComponent<Damagable>();
+
+        uiManager = FindObjectOfType<UIManager>();
     }
 
 
@@ -154,6 +158,12 @@ public class PlayerController : MonoBehaviour
         if (!damagable.LockVelocity)
         {
             rb.velocity = new Vector2(moveInput.x * CurrentMoveSpeed, rb.velocity.y);
+        }
+
+        // If key p down, will open gameover screen for demo
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            uiManager.ShowGameOverScreen();
         }
 
         animator.SetFloat(AnimationStrings.yVelocity, rb.velocity.y);
