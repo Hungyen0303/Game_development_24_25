@@ -10,16 +10,22 @@ public class UIManager : MonoBehaviour
     public GameObject damageTextPrefab;
     public GameObject healthTextPrefab;
 
+    public Canvas gameCanvas;
+
+    [Header ("Game Over")]
     [SerializeField] private GameObject gameOverScreen;
     [SerializeField] private AudioClip gameOverSound;
     AudioSource audioSource;
 
-    public Canvas gameCanvas;
+    [Header("Game Over")]
+    [SerializeField] private GameObject pauseScreen;
 
     public void Awake()
     {
         gameCanvas = FindObjectOfType<Canvas>();
         audioSource = GetComponent<AudioSource>();
+        gameOverScreen.SetActive(false);
+        pauseScreen.SetActive(false);
     }
 
     private void OnEnable()
@@ -57,7 +63,17 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (pauseScreen.activeInHierarchy)
+            {
+                PauseGame(false);
+            }
+            else
+            {
+                PauseGame(true);
+            }
+        }
     }
 
     #region Game Over
@@ -90,5 +106,28 @@ public class UIManager : MonoBehaviour
     }
     #endregion
 
+    #region Pause
+    public void PauseGame(bool status)
+    {
+        pauseScreen.SetActive(status);
 
+        Time.timeScale = status ? 0 : 1; 
+    }
+
+    public void Resume()
+    {
+        PauseGame(false);
+    }
+
+    public void OpenInventory()
+    {
+        // Open inventory
+        Debug.Log("Open Inventory");
+    }
+
+    public void ChangeVolume(float volume)
+    {
+        // Change volume
+    }
+    #endregion
 }
