@@ -12,6 +12,10 @@ public class PlayerController : MonoBehaviour
     public float runSpeed = 8f;
     public float jumpImpulse = 10f;
     public float airWalkSpeed = 5f;
+    private PlayerInput playerInput;
+    private InputAction axeAction;
+    private InputAction thuongAction;
+
     Vector2 moveInput;
 
     TouchingDirections touchingDirections;
@@ -121,6 +125,11 @@ public class PlayerController : MonoBehaviour
         damagable = GetComponent<Damagable>();
 
         uiManager = FindObjectOfType<UIManager>();
+        playerInput = GetComponent<PlayerInput>();
+        axeAction = playerInput.actions["riuAttack"]; // Giả sử action map có tên "UseAxe"
+        axeAction.Disable();
+        thuongAction = playerInput.actions["thuongAttack"]; // Giả sử action map có tên "UseAxe"
+        thuongAction.Disable();
     }
 
 
@@ -153,7 +162,6 @@ public class PlayerController : MonoBehaviour
             collider.GetComponent<Interactable>()?.Interact();
         }
     }
-
     private void FixedUpdate()
     {
         if (!damagable.LockVelocity)
@@ -307,6 +315,30 @@ public class PlayerController : MonoBehaviour
             airWalkSpeed *= 1.2f;
             Debug.Log("Speed increased");
             StartCoroutine(ResetSpeedsAfterDelay(10f));
+
+        }
+
+        if (collision.CompareTag("riu"))
+        {
+            currentWeapon = collision.gameObject;
+            //notificationPanel.SetActive(true);
+            //notificationText.text = "Press 1 to use this new weapon";
+            Destroy(currentWeapon);
+            axeAction.Enable();
+
+
+
+        }
+
+        if (collision.CompareTag("thuong"))
+        {
+            currentWeapon = collision.gameObject;
+            //notificationPanel.SetActive(true);
+            //notificationText.text = "Press 1 to use this new weapon";
+            Destroy(currentWeapon);
+            thuongAction.Enable();
+
+
 
         }
     }
