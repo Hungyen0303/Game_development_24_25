@@ -112,6 +112,39 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+    private void Update()
+    {
+        CheckDeathZone();
+
+        handleUpdate();
+    }
+    [SerializeField] private const float deathY = -20f; // Độ cao mà nhân vật sẽ chết
+    private Vector3 spawnPoint; // Điểm hồi sinh ban đầu
+    private Vector3 checkpoint1 = new Vector3(32, -4, 0); // Điểm hồi sinh ban đầu
+    private Vector3 checkpoint2 = new Vector3(85.6f, -6.2f, 0); // Điểm hồi sinh ban đầu
+    private Vector3 checkpoint3 = new Vector3(155, -2.5f, 0); // Điểm hồi sinh ban đầu
+
+    private void CheckDeathZone()
+    {
+        if (transform.position.y < deathY)
+        {
+            Respawn();
+        }
+    }
+
+    private void Respawn()
+    {
+        if (transform.position.x > checkpoint3.x)
+            transform.position = checkpoint3;
+        else if (transform.position.x > checkpoint2.x)
+            transform.position = checkpoint2;
+        else if (transform.position.x > checkpoint1.x)
+            transform.position = checkpoint1;
+        else
+            transform.position = spawnPoint;
+    }
+
+
 
     Rigidbody2D rb;
 
