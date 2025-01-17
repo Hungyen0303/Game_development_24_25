@@ -127,6 +127,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // notificationPanel.SetActive(false);
 
     }
 
@@ -257,6 +258,20 @@ public class PlayerController : MonoBehaviour
         if (context.started)
         {
             animator.SetTrigger(AnimationStrings.rangedAttackTrigger);
+        }
+    }
+    public void OnRiuAttack(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            animator.SetTrigger(AnimationStrings.RiuAttackTrigger);
+        }
+    }
+    public void OnThuongAttack(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            animator.SetTrigger(AnimationStrings.ThuongAttackTrigger);
         }
     }
 

@@ -17,6 +17,12 @@ public class FadeRemoveBehaviour : StateMachineBehaviour
         spriteRenderer = animator.GetComponent<SpriteRenderer>();
         startColor = spriteRenderer.color;
         objToRemove = animator.gameObject;
+
+        if (objToRemove.GetComponent<DropWeapon>() != null)
+        {
+            objToRemove.GetComponent<DropWeapon>().OnDeath();
+        }
+
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -28,7 +34,7 @@ public class FadeRemoveBehaviour : StateMachineBehaviour
 
         spriteRenderer.color = new Color(startColor.r, startColor.g, startColor.b, newAlpha);
 
-        if(timeElapsed > fadeTime)
+        if (timeElapsed > fadeTime)
         {
             Destroy(objToRemove);
         }
