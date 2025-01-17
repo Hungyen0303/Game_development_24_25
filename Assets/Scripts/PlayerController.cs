@@ -2,8 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlTypes;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(TouchingDirections), typeof(Damagable))]
 public class PlayerController : MonoBehaviour
@@ -112,6 +114,39 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+    private void Update()
+    {
+        CheckDeathZone();
+
+        handleUpdate();
+    }
+    [SerializeField] private const float deathY = -20f; // Độ cao mà nhân vật sẽ chết
+    private Vector3 spawnPoint; // Điểm hồi sinh ban đầu
+    private Vector3 checkpoint1 = new Vector3(32, -4, 0); // Điểm hồi sinh ban đầu
+    private Vector3 checkpoint2 = new Vector3(85.6f, -6.2f, 0); // Điểm hồi sinh ban đầu
+    private Vector3 checkpoint3 = new Vector3(155, -2.5f, 0); // Điểm hồi sinh ban đầu
+
+    private void CheckDeathZone()
+    {
+        if (transform.position.y < deathY)
+        {
+            Respawn();
+        }
+    }
+
+    private void Respawn()
+    {
+        if (transform.position.x > checkpoint3.x)
+            transform.position = checkpoint3;
+        else if (transform.position.x > checkpoint2.x)
+            transform.position = checkpoint2;
+        else if (transform.position.x > checkpoint1.x)
+            transform.position = checkpoint1;
+        else
+            transform.position = spawnPoint;
+    }
+
+
 
     Rigidbody2D rb;
 
@@ -136,7 +171,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // notificationPanel.SetActive(false);
+        notificationPanel.SetActive(false);
 
     }
 
@@ -289,40 +324,40 @@ public class PlayerController : MonoBehaviour
     }
     public GameObject notificationPanel; // Thông báo nhỏ ở góc màn hình
     private GameObject currentWeapon; // Lưu vũ khí hiện tại
+    public TextMeshProUGUI notificationText;
     void OnTriggerEnter2D(Collider2D collision)
     {
+
         if (collision.CompareTag("armor"))
         {
             Debug.Log("Here");
             currentWeapon = collision.gameObject;
             damagable.DecreaseAttack = 0.2f;
-            //notificationPanel.SetActive(true);
-            //notificationText.text = "Press 1 to use this new weapon";
+            notificationPanel.SetActive(true);
+            notificationText.text = "Damage from monster will be decreased 20%";
             Destroy(currentWeapon);
 
-            //StartCoroutine(HideNotificationAfterDelay(2f));
 
         }
 
         if (collision.CompareTag("shoe"))
         {
             currentWeapon = collision.gameObject;
-            //notificationPanel.SetActive(true);
-            //notificationText.text = "Press 1 to use this new weapon";
+            notificationPanel.SetActive(true);
+            notificationText.text = "Your speed will be increased 20%";
             Destroy(currentWeapon);
             walkSpeed *= 1.2f;
             runSpeed *= 1.2f;
             airWalkSpeed *= 1.2f;
-            Debug.Log("Speed increased");
-            StartCoroutine(ResetSpeedsAfterDelay(10f));
 
         }
 
         if (collision.CompareTag("riu"))
         {
             currentWeapon = collision.gameObject;
-            //notificationPanel.SetActive(true);
-            //notificationText.text = "Press 1 to use this new weapon";
+            notificationPanel.SetActive(true);
+
+            notificationText.text = "Press Q to use axe ";
             Destroy(currentWeapon);
             axeAction.Enable();
 
@@ -333,14 +368,16 @@ public class PlayerController : MonoBehaviour
         if (collision.CompareTag("thuong"))
         {
             currentWeapon = collision.gameObject;
-            //notificationPanel.SetActive(true);
-            //notificationText.text = "Press 1 to use this new weapon";
+            notificationPanel.SetActive(true);
+            notificationText.text = "Press E to use spear";
             Destroy(currentWeapon);
             thuongAction.Enable();
 
 
 
         }
+        StartCoroutine(HideNotificationAfterDelay(20f));
+
     }
     private IEnumerator ResetSpeedsAfterDelay(float delay)
     {
