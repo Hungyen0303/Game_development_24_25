@@ -106,7 +106,7 @@ TextureImporter:
         height: 1042
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 81, z: 0, w: 238}
+      border: {x: 0, y: 110, z: 0, w: 238}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -121,13 +121,13 @@ TextureImporter:
       name: Gold_and_silver_frame_buttons_1
       rect:
         serializedVersion: 2
-        x: 2083
-        y: 3125.25
-        width: 2083.5
-        height: 1041.75
+        x: 2230
+        y: 3125
+        width: 1618
+        height: 1042
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 0, y: 0, z: 0, w: 453}
       outline: []
       physicsShape: []
       tessellationDetail: 0
