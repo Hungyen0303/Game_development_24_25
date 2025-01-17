@@ -7,6 +7,7 @@ public class Damagable : MonoBehaviour
 {
     public UnityEvent<int, Vector2> damagableHit;
     Animator animator;
+    public UnityEvent<int, int> healthChanged;
 
     [SerializeField]
     private int maxHealth = 100;
@@ -51,6 +52,7 @@ public class Damagable : MonoBehaviour
         set
         {
             health = value;
+            healthChanged?.Invoke(health, maxHealth);
             if (health <= 0)
             {
                 IsAlive = false;
