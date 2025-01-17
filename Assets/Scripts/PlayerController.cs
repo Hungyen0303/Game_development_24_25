@@ -130,7 +130,8 @@ public class PlayerController : MonoBehaviour
     {
         if (transform.position.y < deathY)
         {
-            Respawn();
+            uiManager.ShowGameOverScreen();
+            //Respawn();
         }
     }
 

@@ -80,20 +80,23 @@ public class UIManager : MonoBehaviour
     // Activate the game over screen
     public void ShowGameOverScreen()
     {
+        //audioSource.PlayOneShot(gameOverSound);
         gameOverScreen.SetActive(true);
-        audioSource.PlayOneShot(gameOverSound);
+        Time.timeScale = 0;
     }
 
     // Game over screen function
     public void Restart()
     {
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale = 1;
         return;
     }
 
     public void MainMenu()
     {
         SceneManager.LoadScene(0);
+        Time.timeScale = 1;
     }
 
     public void Quit()
