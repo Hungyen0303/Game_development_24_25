@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlTypes;
@@ -263,5 +263,51 @@ public class PlayerController : MonoBehaviour
     public void OnHit(int damage, Vector2 knockback)
     {
         rb.velocity = new Vector2(knockback.x, rb.velocity.y + knockback.y);
+    }
+    public GameObject notificationPanel; // Thông báo nhỏ ở góc màn hình
+    private GameObject currentWeapon; // Lưu vũ khí hiện tại
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("armor"))
+        {
+            Debug.Log("Here");
+            currentWeapon = collision.gameObject;
+            damagable.DecreaseAttack = 0.2f;
+            //notificationPanel.SetActive(true);
+            //notificationText.text = "Press 1 to use this new weapon";
+            Destroy(currentWeapon);
+
+            //StartCoroutine(HideNotificationAfterDelay(2f));
+
+        }
+
+        if (collision.CompareTag("shoe"))
+        {
+            currentWeapon = collision.gameObject;
+            //notificationPanel.SetActive(true);
+            //notificationText.text = "Press 1 to use this new weapon";
+            Destroy(currentWeapon);
+            walkSpeed *= 1.2f;
+            runSpeed *= 1.2f;
+            airWalkSpeed *= 1.2f;
+            Debug.Log("Speed increased");
+            StartCoroutine(ResetSpeedsAfterDelay(10f));
+
+        }
+    }
+    private IEnumerator ResetSpeedsAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        // Reset to original speeds
+        walkSpeed = 5f;
+        runSpeed = 8f;
+        airWalkSpeed = 5f;
+    }
+
+    private IEnumerator HideNotificationAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        notificationPanel.SetActive(false);
+
     }
 }

@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - weapon
+  - armor
+  - shoe
   layers:
   - Default
   - TransparentFX
@@ -18,13 +21,7 @@ TagManager:
   - EnemyHitbox
   - GroundDetection
   - Interact
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - weapon
   - 
   - 
   - 

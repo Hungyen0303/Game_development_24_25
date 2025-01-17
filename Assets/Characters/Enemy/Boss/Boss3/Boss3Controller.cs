@@ -103,7 +103,7 @@ public class Boss3Controller : MonoBehaviour
     private void FixedUpdate()
     {
         float distanceToPlayer = Vector2.Distance(playerTransform.position, transform.position);
-        Debug.Log("Distance to Player: " + distanceToPlayer);
+        //Debug.Log("Distance to Player: " + distanceToPlayer);
         if (!damagable.LockVelocity)
         {
             if (CanMove && touchingDirections.IsGrounded)
@@ -122,7 +122,7 @@ public class Boss3Controller : MonoBehaviour
         Vector2 directionToPlayer = (playerTransform.position - transform.position).normalized;
         float distanceToPlayer = Vector2.Distance(playerTransform.position, transform.position);
 
-    
+
         if (distanceToPlayer > 0.1f)
         {
             rb.velocity = new Vector2(

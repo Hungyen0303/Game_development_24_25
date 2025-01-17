@@ -11,13 +11,13 @@ public class Attack : MonoBehaviour
     {
         Damagable damagable = collision.GetComponent<Damagable>();
 
-        if(damagable != null)
+        if (damagable != null)
         {
             Vector2 deliveredKnockback = transform.parent.localScale.x > 0 ? knockback : new Vector2(-knockback.x, knockback.y);
             bool gotHit = damagable.Hit(attackDamage, deliveredKnockback);
-            if(gotHit)
+            if (gotHit)
             {
-                Debug.Log(collision.name + "hit for " + attackDamage);
+                Debug.Log(collision.name + " hit for " + attackDamage);
             }
         }
     }

@@ -21,7 +21,18 @@ public class Damagable : MonoBehaviour
             maxHealth = value;
         }
     }
-
+    private float decreaseAttack = 0.0f;
+    public float DecreaseAttack
+    {
+        get
+        {
+            return decreaseAttack;
+        }
+        set
+        {
+            decreaseAttack = value;
+        }
+    }
     [SerializeField]
     private bool isInvincible = false;
     private float timeSinceHit = 0;
@@ -98,6 +109,8 @@ public class Damagable : MonoBehaviour
 
     public bool Hit(int damage, Vector2 knockback)
     {
+        damage = (int)(damage * (1 - decreaseAttack));
+        Debug.Log("Damage: " + damage);
         if (IsAlive && !isInvincible)
         {
             Health -= damage;
