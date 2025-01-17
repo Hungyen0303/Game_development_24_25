@@ -43370,46 +43370,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4615984673953356398, guid: 6f30a62e0862f2142a1d198ebe38a623, type: 3}
-      propertyPath: m_ActionEvents.Array.size
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 4615984673953356398, guid: 6f30a62e0862f2142a1d198ebe38a623, type: 3}
-      propertyPath: m_ActionEvents.Array.data[15].m_ActionId
-      value: ed51a4a8-5dbb-4f22-8da1-60da14b5d59c
-      objectReference: {fileID: 0}
-    - target: {fileID: 4615984673953356398, guid: 6f30a62e0862f2142a1d198ebe38a623, type: 3}
-      propertyPath: m_ActionEvents.Array.data[15].m_ActionName
-      value: Player/RangedAttack[/Keyboard/f]
-      objectReference: {fileID: 0}
-    - target: {fileID: 4615984673953356398, guid: 6f30a62e0862f2142a1d198ebe38a623, type: 3}
-      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4615984673953356398, guid: 6f30a62e0862f2142a1d198ebe38a623, type: 3}
-      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4615984673953356398, guid: 6f30a62e0862f2142a1d198ebe38a623, type: 3}
-      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1705461398}
-    - target: {fileID: 4615984673953356398, guid: 6f30a62e0862f2142a1d198ebe38a623, type: 3}
-      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4615984673953356398, guid: 6f30a62e0862f2142a1d198ebe38a623, type: 3}
-      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnRangedAttack
-      objectReference: {fileID: 0}
-    - target: {fileID: 4615984673953356398, guid: 6f30a62e0862f2142a1d198ebe38a623, type: 3}
-      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PlayerController, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 4615984673953356398, guid: 6f30a62e0862f2142a1d198ebe38a623, type: 3}
-      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 4800085953991604979, guid: 6f30a62e0862f2142a1d198ebe38a623, type: 3}
       propertyPath: m_LocalPosition.x
       value: 162.2
@@ -43450,21 +43410,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5944487981058969756, guid: 6f30a62e0862f2142a1d198ebe38a623, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8834687529572124782, guid: 6f30a62e0862f2142a1d198ebe38a623, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 8835211166004390845, guid: 6f30a62e0862f2142a1d198ebe38a623, type: 3}
-      propertyPath: isMoving
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8835211166004390845, guid: 6f30a62e0862f2142a1d198ebe38a623, type: 3}
-      propertyPath: interactableLayer.m_Bits
-      value: 4096
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -43650,16 +43598,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1438090484187121841, guid: 15e0ba4ebf842dd46896cc6c84c7cabc, type: 3}
-      propertyPath: goNextLevel
-      value: 1
+      propertyPath: levelIndex
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3857329159372204134, guid: 15e0ba4ebf842dd46896cc6c84c7cabc, type: 3}
       propertyPath: m_Name
       value: FinishPoint
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964724753814359052, guid: 15e0ba4ebf842dd46896cc6c84c7cabc, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

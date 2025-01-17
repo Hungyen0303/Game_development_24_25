@@ -540,7 +540,7 @@ GameObject:
   - component: {fileID: 9005906140009841508}
   m_Layer: 7
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -663,7 +663,7 @@ MonoBehaviour:
   airWalkSpeed: 5
   interactableLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4096
   isMoving: 0
   isRunning: 0
   isFacingRight: 1
@@ -802,7 +802,19 @@ MonoBehaviour:
     m_ActionId: 14a28f5f-cda1-447f-9629-75988501e956
     m_ActionName: Player/Jump[/Keyboard/w]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8835211166004390845}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnRangedAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: ed51a4a8-5dbb-4f22-8da1-60da14b5d59c
     m_ActionName: Player/RangedAttack[/Keyboard/f]
   - m_PersistentCalls:
@@ -812,7 +824,7 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 0922aa78-7440-4442-8cdb-96cea32ba92a
-    m_ActionName: Player/thuongAttack[/Keyboard/a]
+    m_ActionName: Player/thuongAttack[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
