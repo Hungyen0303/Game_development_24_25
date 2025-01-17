@@ -72,9 +72,9 @@ public class Damagable : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if(isInvincible)
+        if (isInvincible)
         {
-            if(timeSinceHit > invincibilityTime)
+            if (timeSinceHit > invincibilityTime)
             {
                 isInvincible = false;
                 timeSinceHit = 0;
@@ -106,7 +106,10 @@ public class Damagable : MonoBehaviour
             animator.SetTrigger(AnimationStrings.hitTrigger);
             LockVelocity = true;
             damagableHit?.Invoke(damage, knockback);
-            CharacterEvents.characterDamaged.Invoke(gameObject, damage);
+            if (CharacterEvents.characterDamaged != null)
+            {
+                CharacterEvents.characterDamaged.Invoke(gameObject, damage);
+            }
             return true;
         }
         return false;
