@@ -35,7 +35,7 @@ public class SceneController : MonoBehaviour
     {
         animator.SetTrigger("end");
         yield return new WaitForSeconds(1);
-        SceneManager.LoadScene(indexLevel);
+        SceneManager.LoadSceneAsync(indexLevel);
         animator.SetTrigger("start");
     }
 

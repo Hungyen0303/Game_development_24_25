@@ -138,6 +138,7 @@ public class UIManager : MonoBehaviour
         // Save game
         Debug.Log("Save Game");
         playerController.SavePlayerInfo();
+        PlayerPrefs.Save();
         SceneManager.LoadScene(0);
     }
     #endregion
