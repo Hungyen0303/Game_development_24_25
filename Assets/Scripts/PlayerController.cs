@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(TouchingDirections), typeof(Damagable))]
 public class PlayerController : MonoBehaviour
@@ -25,6 +26,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask interactableLayer;
 
     UIManager uiManager;
+    AudioManager audioManager;
 
     public float CurrentMoveSpeed
     {
@@ -130,6 +132,7 @@ public class PlayerController : MonoBehaviour
     {
         if (transform.position.y < deathY)
         {
+            audioManager.PlayDeath();
             uiManager.ShowGameOverScreen();
             //Respawn();
         }
@@ -145,6 +148,8 @@ public class PlayerController : MonoBehaviour
             transform.position = checkpoint1;
         else
             transform.position = spawnPoint;
+
+        audioManager.PlaySFX(audioManager.respawn);
     }
 
 
@@ -161,6 +166,7 @@ public class PlayerController : MonoBehaviour
         damagable = GetComponent<Damagable>();
 
         uiManager = FindObjectOfType<UIManager>();
+        audioManager = FindObjectOfType<AudioManager>();
         playerInput = GetComponent<PlayerInput>();
         axeAction = playerInput.actions["riuAttack"]; // Giả sử action map có tên "UseAxe"
         axeAction.Disable();
@@ -173,7 +179,23 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         notificationPanel.SetActive(false);
-
+        if (PlayerPrefs.GetInt("saved") == 1)
+        {
+            walkSpeed = PlayerPrefs.GetFloat("walkSpeed");
+            runSpeed = PlayerPrefs.GetFloat("runSpeed");
+            airWalkSpeed = PlayerPrefs.GetFloat("airWalkSpeed");
+            jumpImpulse = PlayerPrefs.GetFloat("jumpImpulse");
+            damagable.DecreaseAttack = PlayerPrefs.GetFloat("decreaseAttack");
+            //damagable.Health = PlayerPrefs.GetFloat("health");
+            if (PlayerPrefs.GetFloat("currentWeapon") == 1)
+            {
+                axeAction.Enable();
+            }
+            else if (PlayerPrefs.GetFloat("currentWeapon") == 2)
+            {
+                thuongAction.Enable();
+            }
+        }
     }
 
     // Update is called once per frame
@@ -285,6 +307,7 @@ public class PlayerController : MonoBehaviour
         if (context.started && touchingDirections.IsGrounded && CanMove)
         {
             animator.SetTrigger(AnimationStrings.jump);
+            audioManager.PlaySFX(audioManager.jump);
             rb.velocity = new Vector2(rb.velocity.x, jumpImpulse);
         }
     }
@@ -294,7 +317,7 @@ public class PlayerController : MonoBehaviour
         if (context.started)
         {
             animator.SetTrigger(AnimationStrings.attack);
-
+            audioManager.PlaySFX(audioManager.attack);
         }
     }
     public void OnRangedAttack(InputAction.CallbackContext context)
@@ -302,6 +325,7 @@ public class PlayerController : MonoBehaviour
         if (context.started)
         {
             animator.SetTrigger(AnimationStrings.rangedAttackTrigger);
+            audioManager.PlaySFX(audioManager.attack);
         }
     }
     public void OnRiuAttack(InputAction.CallbackContext context)
@@ -309,6 +333,7 @@ public class PlayerController : MonoBehaviour
         if (context.started)
         {
             animator.SetTrigger(AnimationStrings.RiuAttackTrigger);
+            audioManager.PlaySFX(audioManager.attack);
         }
     }
     public void OnThuongAttack(InputAction.CallbackContext context)
@@ -316,12 +341,14 @@ public class PlayerController : MonoBehaviour
         if (context.started)
         {
             animator.SetTrigger(AnimationStrings.ThuongAttackTrigger);
+            audioManager.PlaySFX(audioManager.attack);
         }
     }
 
     public void OnHit(int damage, Vector2 knockback)
     {
         rb.velocity = new Vector2(knockback.x, rb.velocity.y + knockback.y);
+        audioManager.PlaySFX(audioManager.hit);
     }
     public GameObject notificationPanel; // Thông báo nhỏ ở góc màn hình
     private GameObject currentWeapon; // Lưu vũ khí hiện tại
@@ -394,5 +421,30 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(delay);
         notificationPanel.SetActive(false);
 
+    }
+
+    public void SavePlayerInfo()
+    {
+        PlayerPrefs.SetInt("saved", 1);
+        PlayerPrefs.SetInt("level", SceneManager.GetActiveScene().buildIndex);
+        PlayerPrefs.SetFloat("walkSpeed", walkSpeed);
+        PlayerPrefs.SetFloat("runSpeed", runSpeed);
+        PlayerPrefs.SetFloat("airWalkSpeed", airWalkSpeed);
+        PlayerPrefs.SetFloat("jumpImpulse", jumpImpulse);
+        PlayerPrefs.SetFloat("decreaseAttack", damagable.DecreaseAttack);
+        //PlayerPrefs.SetFloat("health", damagable.Health);
+
+        if (axeAction.enabled)
+        {
+            PlayerPrefs.SetFloat("currentWeapon", 1);
+        }
+        else if (thuongAction.enabled)
+        {
+            PlayerPrefs.SetFloat("currentWeapon", 2);
+        }
+        else
+        {
+            PlayerPrefs.SetFloat("currentWeapon", 0);
+        }
     }
 }

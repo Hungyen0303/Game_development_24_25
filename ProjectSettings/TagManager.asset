@@ -9,6 +9,7 @@ TagManager:
   - shoe
   - riu
   - thuong
+  - audio
   layers:
   - Default
   - TransparentFX

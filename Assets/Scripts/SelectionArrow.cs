@@ -32,8 +32,8 @@ public class SelectionAround : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Return))
         {
             audioSource.PlayOneShot(selectSound);
-            opitons[currentIndex].GetComponent<Button>().onClick.Invoke();
-            Debug.Log("Selected: " + currentIndex);
+            if (opitons[currentIndex].GetComponent<Button>() != null)
+                opitons[currentIndex].GetComponent<Button>().onClick.Invoke();
         }
     }
 

@@ -110,6 +110,7 @@ GameObject:
   - component: {fileID: 1934852638781724246}
   - component: {fileID: 1389184886234240905}
   - component: {fileID: 8362777592581608050}
+  - component: {fileID: 6031622492932783987}
   m_Layer: 8
   m_Name: Boss_1
   m_TagString: Untagged
@@ -330,6 +331,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  healthChanged:
+    m_PersistentCalls:
+      m_Calls: []
   maxHealth: 500
   isInvincible: 0
   invincibilityTime: 0.7
@@ -362,6 +366,41 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!70 &6031622492932783987
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056362437549590598}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.018310547, y: -2.7107763}
+  m_Size: {x: 3.017456, y: 4.5193806}
+  m_Direction: 0
 --- !u!1 &3562499509222002614
 GameObject:
   m_ObjectHideFlags: 0

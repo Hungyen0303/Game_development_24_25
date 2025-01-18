@@ -4,6 +4,7 @@ using TMPro.Examples;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -12,18 +13,22 @@ public class UIManager : MonoBehaviour
 
     public Canvas gameCanvas;
 
+    [SerializeField] private PlayerController playerController;
+
     [Header ("Game Over")]
     [SerializeField] private GameObject gameOverScreen;
     [SerializeField] private AudioClip gameOverSound;
-    AudioSource audioSource;
 
-    [Header("Game Over")]
+    [Header("Pause Game")]
     [SerializeField] private GameObject pauseScreen;
+    [SerializeField] private AudioClip pauseSound;
+
+    [Header("Audio")]
+    AudioManager audioManager;
 
     public void Awake()
     {
         gameCanvas = FindObjectOfType<Canvas>();
-        audioSource = GetComponent<AudioSource>();
         gameOverScreen.SetActive(false);
         pauseScreen.SetActive(false);
     }
@@ -80,7 +85,7 @@ public class UIManager : MonoBehaviour
     // Activate the game over screen
     public void ShowGameOverScreen()
     {
-        //audioSource.PlayOneShot(gameOverSound);
+        audioManager.PlaySFX(gameOverSound);
         gameOverScreen.SetActive(true);
         Time.timeScale = 0;
     }
@@ -128,9 +133,12 @@ public class UIManager : MonoBehaviour
         Debug.Log("Open Inventory");
     }
 
-    public void ChangeVolume(float volume)
+    public void SaveGame()
     {
-        // Change volume
+        // Save game
+        Debug.Log("Save Game");
+        playerController.SavePlayerInfo();
+        SceneManager.LoadScene(0);
     }
     #endregion
 }

@@ -15,6 +15,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip jump;
     public AudioClip attack;
     public AudioClip hit;
+    public AudioClip respawn;
 
     private void Start()
     {
