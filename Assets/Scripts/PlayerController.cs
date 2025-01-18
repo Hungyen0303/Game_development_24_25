@@ -8,14 +8,19 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody2D), typeof(TouchingDirections), typeof(Damagable))]
 public class PlayerController : MonoBehaviour
 {
+
+
     public float walkSpeed = 5f;
     public float runSpeed = 8f;
     public float jumpImpulse = 10f;
     public float airWalkSpeed = 5f;
+    public int damage = 10;
+
+    public int Soul = 0;
     Vector2 moveInput;
 
     TouchingDirections touchingDirections;
-    Damagable damagable;
+    public Damagable damagable;
     public LayerMask interactableLayer;
     UIManager uiManager;
 

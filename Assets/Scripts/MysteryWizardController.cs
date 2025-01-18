@@ -32,6 +32,7 @@ public class MysteryWizardController : MonoBehaviour, Interactable
     }
 
     public void Interact(){
+
         StartCoroutine(DialogManager.Instance.showDialog(dialog));
         
     }

@@ -118,9 +118,9 @@ public class DialogManager : MonoBehaviour
             choiceText.text = node.Choices[i].ChoiceText;
 
             if (i == currentChoiceIndex)
-                choiceText.color = Color.yellow; // Highlighted choice
+                choiceText.color = Color.red; // Highlighted choice
             else
-                choiceText.color = Color.white;
+                choiceText.color = Color.black;
 
             choiceObj.name = $"Choice_{i}";
         }
@@ -147,11 +147,12 @@ public class DialogManager : MonoBehaviour
             else if (Input.GetKeyDown(KeyCode.T))
             {
                 // Execute the selected choice action
+                                choicesPanel.SetActive(false);
                 choiceNode.Choices[currentChoiceIndex].OnSelect?.Invoke();
 
                 // Hide the choices panel and dialog box
                 currentNode = 0;
-                choicesPanel.SetActive(false);
+
                 dialogBox.SetActive(false);
                 OnHideDialog?.Invoke();
                 
@@ -171,9 +172,9 @@ public class DialogManager : MonoBehaviour
 
             // Highlight the currently selected choice
             if (i == currentChoiceIndex)
-                choiceText.color = Color.yellow; // Highlighted choice
+                choiceText.color = Color.red; // Highlighted choice
             else
-                choiceText.color = Color.white;
+                choiceText.color = Color.black;
         }
     }
 

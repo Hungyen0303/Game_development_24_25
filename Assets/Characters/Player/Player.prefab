@@ -459,9 +459,12 @@ MonoBehaviour:
   runSpeed: 8
   jumpImpulse: 10
   airWalkSpeed: 5
+  damage: 10
+  Soul: 0
+  damagable: {fileID: 0}
   interactableLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4096
   isMoving: 0
   isRunning: 0
   isFacingRight: 1
@@ -599,7 +602,19 @@ MonoBehaviour:
     m_ActionId: 14a28f5f-cda1-447f-9629-75988501e956
     m_ActionName: Player/Jump[/Keyboard/w]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8835211166004390845}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnRangedAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: ed51a4a8-5dbb-4f22-8da1-60da14b5d59c
     m_ActionName: Player/RangedAttack[/Keyboard/f]
   m_NeverAutoSwitchControlSchemes: 0
