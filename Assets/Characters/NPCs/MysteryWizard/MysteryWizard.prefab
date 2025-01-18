@@ -113,9 +113,9 @@ GameObject:
   - component: {fileID: 3434899412586305518}
   - component: {fileID: 6513244529620354740}
   - component: {fileID: 1980017993530448962}
-  - component: {fileID: 2084771262755219206}
   - component: {fileID: 1930602250755353106}
   - component: {fileID: 815859319565132637}
+  - component: {fileID: 3468181535251953152}
   m_Layer: 12
   m_Name: MysteryWizard
   m_TagString: Untagged
@@ -236,19 +236,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.8239553, y: 3.1839833}
   m_EdgeRadius: 0
---- !u!114 &2084771262755219206
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1128570771966259525}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a578ed50a45d1a34e844404b6a64bdc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameText: {fileID: 8540487885365829455}
 --- !u!50 &1930602250755353106
 Rigidbody2D:
   serializedVersion: 4
@@ -297,6 +284,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3468181535251953152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1128570771966259525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d773ca7ec1648542a7cf4af4d1a7bb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameText: {fileID: 8540487885365829455}
 --- !u!1 &8877862750517908005
 GameObject:
   m_ObjectHideFlags: 0
