@@ -12,4 +12,10 @@ public class MainSceneMenu : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void ContinueGame()
+    {
+        int level = PlayerPrefs.GetInt("level");
+        SceneController.instance.LoadLevel(level);
+    }
 }
