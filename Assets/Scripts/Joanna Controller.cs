@@ -30,13 +30,13 @@ public class JoannaController : MonoBehaviour, Interactable
                     })
             }
         };
-        dialog = new Dialog
+        dialog2 = new Dialog
         {
             Name = "Joanna",
             Lines = new List<Node>
             {
                 new DialogueNode("Ta không còn gì để dạy ngài nữa")
-                }
+            }
         };
     }
 
@@ -46,7 +46,7 @@ public class JoannaController : MonoBehaviour, Interactable
         player.airWalkSpeed *= 1.1f;
         player.walkSpeed *= 1.1f;
         player.runSpeed *= 1.1f;
-        Node node = new DialogueNode("Cuồng phong sẽ dẫn lối ngươi đi");
+        Node node = new DialogueNode("Cuồng phong sẽ dẫn lối người đi");
         DialogManager.Instance.HandleNode(node);
         return static () =>
         {        };
@@ -56,7 +56,7 @@ public class JoannaController : MonoBehaviour, Interactable
     {
         player.damagable.MaxHealth += 20;
         player.damagable.health += 20;
-        Node node = new DialogueNode("Kế thừa ý chí bảo hộ");
+        Node node = new DialogueNode("Trâu như trâu vậy.");
         DialogManager.Instance.HandleNode(node);
         return static () =>
         {
@@ -67,7 +67,7 @@ public class JoannaController : MonoBehaviour, Interactable
     private static Action increaseATK()
     {
         player.damage +=5;
-        Node node = new DialogueNode("Thông thạo nhiều loại vũ khí luôn tốt hơn là không biết gì cả ");
+        Node node = new DialogueNode("Đôi khi cách phòng thủ tốt nhất là tấn công");
         DialogManager.Instance.HandleNode(node);
         return static () =>
         {        };
@@ -89,6 +89,7 @@ public class JoannaController : MonoBehaviour, Interactable
     {
         if (limit > 0)
         {
+            Debug.Log(limit);
             StartCoroutine(DialogManager.Instance.showDialog(dialog));
             limit--;
         }
