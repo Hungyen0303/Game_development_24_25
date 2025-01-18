@@ -25,5 +25,6 @@ internal class AnimationStrings
     internal static string RiuAttackTrigger = "riuAttack";
     internal static string ThuongAttackTrigger = "thuongAttack";
 
-
 }
+
+
