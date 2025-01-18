@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour
     TouchingDirections touchingDirections;
     Damagable damagable;
     public LayerMask interactableLayer;
-
     UIManager uiManager;
 
     public float CurrentMoveSpeed
@@ -119,7 +118,6 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         touchingDirections = GetComponent<TouchingDirections>();
         damagable = GetComponent<Damagable>();
-
         uiManager = FindObjectOfType<UIManager>();
     }
 
@@ -133,9 +131,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     public void handleUpdate()
     {
+        
         if (Input.GetKeyDown(KeyCode.T))
         {
-
+            Debug.Log("T key pressed");
             interactWithNPC();
         }
     }
@@ -143,9 +142,8 @@ public class PlayerController : MonoBehaviour
     private void interactWithNPC()
     {
         var facingDir = new Vector2(1, 0) * (isFacingRight ? 1 : -1);
-        // Debug.Log(facingDir);
         var interactPos = (Vector2)transform.position + facingDir;
-        // Debug.DrawLine(transform.position,interactPos,Color.red,1f);
+        Debug.DrawLine(transform.position,interactPos,Color.red,1f);
         var collider = Physics2D.OverlapCircle(interactPos, 0.2f, interactableLayer);
         if (collider != null)
         {
