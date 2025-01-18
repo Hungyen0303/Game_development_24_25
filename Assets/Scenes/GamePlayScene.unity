@@ -546,6 +546,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -1.92
       objectReference: {fileID: 0}
+    - target: {fileID: 3009044219238263924, guid: 44147e297e099ee448761c75edf69915, type: 3}
+      propertyPath: m_Size.y
+      value: 0.5959176
+      objectReference: {fileID: 0}
+    - target: {fileID: 3009044219238263924, guid: 44147e297e099ee448761c75edf69915, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.36096233
+      objectReference: {fileID: 0}
     - target: {fileID: 3531851154730523493, guid: 44147e297e099ee448761c75edf69915, type: 3}
       propertyPath: m_Name
       value: Knight (3)
@@ -1241,8 +1249,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogBox: {fileID: 1990044976}
+  dialogName: {fileID: 0}
   dialogText: {fileID: 2045655284}
+  choicesPanel: {fileID: 0}
   letterPerSecond: 40
+  choicePrefab: {fileID: 0}
 --- !u!114 &845870724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1256,6 +1267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerController: {fileID: 1705461398}
+  gameState: 0
 --- !u!4 &845870725
 Transform:
   m_ObjectHideFlags: 0

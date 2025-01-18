@@ -85,7 +85,7 @@ public class UIManager : MonoBehaviour
     // Activate the game over screen
     public void ShowGameOverScreen()
     {
-        audioManager.PlaySFX(gameOverSound);
+        //audioManager.PlaySFX(gameOverSound);
         gameOverScreen.SetActive(true);
         Time.timeScale = 0;
     }
